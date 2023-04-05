@@ -1,0 +1,45 @@
+﻿@page
+@model RazorApi.Pages.Categories.IndexModel
+@{
+}
+<partial name="_Notification" />
+<div class="container p-3">
+    <div class="row pt-4">
+        <div class="col-6">
+            <h2 class="text-primary"> Category List</h2>
+
+        </div>
+        <div class="col-6 text-end" >
+            <a asp-page="Create" class="btn btn-primary"><i class="bi bi-plus-circle"></i> &nbspCreate Category</a>
+        </div>
+    </div>
+    <br /> <br />
+    <table class="table table-bordered table-striped" style="width:100%">
+        <thead>
+        <th>
+            Category Name 
+        </th>
+        <th>
+            Display Order
+        </th>
+        </thead>
+        <tbody>
+            @foreach(var category in Model.categories){
+                <tr>
+                    <td width="50%">@category.Name</td>
+                    <td width="30%">@category.DisplayOrder</td>
+                    <td>
+                        <div class="w-75 btn-group" role="group">
+                        <a asp-page="Edit" asp-route-Id="@category.Id" class="btn btn-primary">
+                            <i class="bi bi-pencil-square"></i> &nbsp; Edit
+                        </a>
+                        <a asp-page="Delete" asp-route-Id="@category.Id"class="btn btn-danger mx-2">
+                            <i class="bi bi-trash"></i> &nbsp; Delete
+                        </a>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

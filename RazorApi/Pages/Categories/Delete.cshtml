@@ -1,0 +1,37 @@
+﻿@page
+@model RazorApi.Pages.Categories.DeleteModel
+@{
+}
+
+<form method="post">
+    <input hidden asp-for="category.Id" />
+    <div class="border p-3 mt-4">
+        <div class="row pb-2">
+            <h2 class="text-primary pl-3">Delete category</h2>
+            <hr />
+        </div>
+        <div asp-validation-summary="All"></div>
+        <div class="mb-3">
+            <label asp-for="category.Name"></label>
+            <input asp-for="@Model.category.Name" class="form-control" disabled/>
+        </div>
+        <div class="mb-3">
+            <label asp-for="category.DisplayOrder"></label>
+            <input class="form-control" asp-for="@Model.category.DisplayOrder" disabled/>
+
+        </div>
+        <button type="submit" class="btn btn-danger" style="width:150px">
+            Delete
+        </button>
+        <a class="btn btn-secondary" style="width:150px" asp-page="Index">
+            Back to List
+        </a>
+    </div>
+
+</form>
+
+@section Scripts{
+    @{
+    <partial name="_ValidationScriptsPartial"/>
+    }
+}
